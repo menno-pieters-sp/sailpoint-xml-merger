@@ -9,3 +9,5 @@ To run the tool:
 For example:
 
 ```java -jar SailPointXMLMerger.jar /home/jdoe/workspace/identityiq/config > /home/jdoe/Documents/identityiq-all.xml```
+
+NOTE: the tools does not validate the XML and object types.
