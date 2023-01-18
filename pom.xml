@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>sailpoint-xml-merger</name>
+  <description>SailPoint XML Merger</description>
+
+  <!-- The groupId, artifactId, version is sourced from when the project is instantiated.-->
+  <groupId>sailpoint</groupId>
+  <artifactId>sailpoint-xml-merger</artifactId>
+  <version>20230118.0.1</version>
+
+  <!-- Set build properties here. For the most part, you should only need to set the version numbers
+  for dependencies here. -->
+  <properties>
+    <!-- Versions for various dependencies are set here -->
+    <compiler.source.version>1.8</compiler.source.version>
+    <compiler.target.version>1.8</compiler.target.version>
+  </properties>
+
+  <!-- Plugins for build -->
+  <build>
+    <plugins>
+      <!-- Compiler settings -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.10.1</version>
+        <configuration>
+          <source>${compiler.source.version}</source>
+          <target>${compiler.target.version}</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <finalName>SailPointXMLMerger</finalName>
+          <archive>
+            <manifest>
+              <mainClass>sailpoint.pse.xml.Merger</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <!-- Assembles plugin -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+          <descriptors>
+            <descriptor>build-config/assembly/connector-files.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <id>create-release</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
